@@ -1,22 +1,21 @@
 $(document).ready(function(){
-   // var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
-    var streamers = ["freecodecamp","storbeck", "habathcx"]; 
-    var titles = [];
-    var descriptions =[];
-    var logoUrls = [];
-    var urls = [];
-    var user  = streamers[0];
+   var streamers = ["GalacticElliot","ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    //var streamers = ["freecodecamp","storbeck", "habathcx"]; 
+   
+    
     
     
     streamers.forEach(function(streamer){
     
-    $.getJSON("https://api.twitch.tv/kraken/streams/freecodecamp?callback=?",function(streamInfo){
+    $.getJSON("https://api.twitch.tv/kraken/streams/"+streamer+"?callback=?",function(streamInfo){
         
         if(streamInfo.stream==null){
             offlineStream(streamer);
+            console.log(streamer + "offline");
         }
         else{
             onlineStream(streamInfo);
+            console.log(streamer+"online");
         }
         
        
@@ -42,8 +41,13 @@ function offlineStream(streamer){
         //console.log(JSON.stringify(channelInfo));
         //console.log(channelInfo.logo);
         //$(".content").append("<h3>"+channelInfo.+"</h3>")
+        $(".content").append("<div class = row>");
+        $(".content").append("<div class = col-xs-4 content-center>");
         $(".content").append("<a href = "+channelInfo.url+"> "+streamer+" </a> ");
         $(".content").append("<img src = "+channelInfo.logo+">");
+        $(".content").append("<p>Offline</p>");
+        $(".content").append("</div>");
+        $(".content").append("</div>");
         
         });
     
@@ -51,6 +55,14 @@ function offlineStream(streamer){
 }
 
 function onlineStream(data){
+            $(".content").append("<div class = row>");
+        $(".content").append("<div class = col xs-4 content-center>");
+        $(".content").append("<a href = "+data.stream.channel.url+"> "+data.stream.channel.display_name+" </a> ");
+        $(".content").append("<img src = "+data.stream.channel.logo+">");
+        $(".content").append("<p>"+data.stream.channel.status+"</p>");
+        $(".content").append("</div>");
+        $(".content").append("</div>");
+    
     
 }
 

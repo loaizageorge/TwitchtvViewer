@@ -7,3 +7,18 @@
 h1{
     text-align: center;
 }
+
+body{
+    text-align: center;
+}
+
+img{
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    float: left;
+}
+
+.description{
+    float:left;
+}
