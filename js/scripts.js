@@ -1,4 +1,8 @@
+
 $(document).ready(function(){
+
+
+      
    var streamers = ["GalacticElliot","ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
     //var streamers = ["freecodecamp","storbeck", "habathcx"]; 
    
@@ -31,6 +35,8 @@ $(document).ready(function(){
         //$("#description").html(data.stream.channel.status);
        
 });
+    
+
    
 
 });
@@ -41,13 +47,14 @@ function offlineStream(streamer){
         //console.log(JSON.stringify(channelInfo));
         //console.log(channelInfo.logo);
         //$(".content").append("<h3>"+channelInfo.+"</h3>")
-        $(".content").append("<div class = row>");
-        $(".content").append("<div class = col-xs-4 content-center>");
-        $(".content").append("<a href = "+channelInfo.url+"> "+streamer+" </a> ");
-        $(".content").append("<img src = "+channelInfo.logo+">");
-        $(".content").append("<p>Offline</p>");
-        $(".content").append("</div>");
-        $(".content").append("</div>");
+        $(".content-offline").append("<div class = row>");
+       $(".content-offline").append("<div class = col-xs-4 >");
+        $(".content-offline").append("<a href = "+channelInfo.url+"> "+streamer+" </a> ");
+        $(".content-offline").append("<img src = "+channelInfo.logo+">");
+        $(".content-offline").append("<p>Offline</p>");
+        $(".content-offline").append("</div>");
+        $(".content-offline").append("</div>");
+         $(".content-offline").append("</div>");
         
         });
     
@@ -55,14 +62,20 @@ function offlineStream(streamer){
 }
 
 function onlineStream(data){
-            $(".content").append("<div class = row>");
-        $(".content").append("<div class = col xs-4 content-center>");
-        $(".content").append("<a href = "+data.stream.channel.url+"> "+data.stream.channel.display_name+" </a> ");
-        $(".content").append("<img src = "+data.stream.channel.logo+">");
-        $(".content").append("<p>"+data.stream.channel.status+"</p>");
-        $(".content").append("</div>");
-        $(".content").append("</div>");
+        $(".content-online").append("<div class = row>");
+      $(".content-online").append("<div class = col-xs-4 >");
+        $(".content-online").append("<a href = "+data.stream.channel.url+"> "+data.stream.channel.display_name+" </a> ");
+        $(".content-online").append("<img src = "+data.stream.channel.logo+">");
+        $(".content-online").append("<p>"+data.stream.channel.status+"</p>");
+        $(".content-online").append("</div>");
+        $(".content-online").append("</div>");
+     $(".content-online").append("</div>");
     
     
 }
 
+function hideOnline(){
+     $(".content-offline").hide();
+}
+     
+   

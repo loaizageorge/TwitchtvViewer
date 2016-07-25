@@ -19,6 +19,14 @@ img{
     float: left;
 }
 
+.content-stream{
+    
+}
+
 .description{
     float:left;
+}
+
+#online{
+    visibility: hidden;
 }
