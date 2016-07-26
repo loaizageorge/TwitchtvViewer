@@ -8,8 +8,15 @@ body {
 
 }
 
-a{
+a:link,a:visited{
+    color:black;
     text-align: center;
+    transition: all .2s ease-in-out;
+    
+}
+
+a:hover{
+    color:white;
     
 }
 
@@ -19,6 +26,7 @@ h1{
 
 .content-dropdown{
     text-align: center;
+    margin-bottom: 15px;
 }
 
 p{
@@ -38,9 +46,7 @@ img {
 }
 
 
-select{
-    
-}
+
 
 .content-streams {
     text-align: center;
@@ -50,35 +56,31 @@ select{
     
 }
 
-.content-streams-stylize {
-   padding: 5px 0px 5px 0px;;
-   margin: 10px;
-    border: px solid white;
 
-}
-
-.content-online{
-    background-color: blue;
-    padding-bottom: 60px;
-}
-
-.content-offline{
-    background-color: red;
-    padding-bottom: 60px;
-    margin-bottom: 20px;
-}
-
-.description {
-    float: left;
-    text-align: right;
+.style{
+   padding: 5px 0px 5px 0px;
+   margin-bottom: 25px;
+   font-size: 130%;
+   border-radius: 15px;  
     
-}
-
-.middle{
-    
-    margin-top: ;
+    display: inline-block;
     vertical-align: middle;
-    
-    margin-bottom: 20px
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+   
 
+}
+
+
+.style-offline{
+    background-color: rgb(255, 200, 87);
+    
+}
+
+.style-online{
+    background-color: rgb(87, 200, 255);
 }

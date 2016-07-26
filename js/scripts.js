@@ -36,37 +36,12 @@ $(document).ready(function () {
 
 function offlineStream(streamer) {
     $.getJSON("https://api.twitch.tv/kraken/channels/" + streamer + "?callback=?", function (channelInfo) {
-        //console.log(JSON.stringify(channelInfo));
-        //console.log(channelInfo.logo);
-        //$(".content").append("<h3>"+channelInfo.+"</h3>")
-        $(".content-offline").append("<div class = row>");
-        $(".content-offline").append("<div class = content-streams-stylize>");
-        $(".content-offline").append("<div class = col-md-2 >");
-        $(".content-offline").append("<img src = " + channelInfo.logo + ">");
-        $(".content-offline").append("</div>");
-        $(".content-offline").append("<div class = col-md-10 >");
-        $(".content-offline").append("<div class = middle>");
-        $(".content-offline").append("<a href = " + channelInfo.url + "> " + streamer + " </a> ");
-        $(".content-offline").append("</div>");
-        $(".content-offline").append("<p>Offline</p>");
-        $(".content-offline").append("</div>");
-        $(".content-offline").append("</div>");
-        $(".content-offline").append("</div>");
+        var html = "<a target = '_blank' href = " + channelInfo.url + "><div class = 'row style style-offline'><div class = 'col-md-2'><img src = " + channelInfo.logo + "></div><div class = 'col-md-10'><p>"+streamer+"<br>Offline</p></div></div></a>";
+        $(".content-offline").append(html);
     });
 }
 
 function onlineStream(data) {
-    $(".content-online").append("<div class = row>");
-    $(".content-online").append("<div class = content-streams-stylize>");
-    $(".content-online").append("<div class = col-md-2 >");
-    $(".content-online").append("<img src = " + data.stream.channel.logo + ">");
-    $(".content-online").append("</div>");
-    $(".content-online").append("<div class = col-md-10 >");
-    $(".content-online").append("<div class = middle>");
-    $(".content-online").append("<a href = " + data.stream.channel.url + "> " + data.stream.channel.display_name + " </a> ");
-    $(".content-online").append("</div>");
-    $(".content-online").append("<p>" + data.stream.channel.status + "</p>");
-    $(".content-online").append("</div>");
-    $(".content-online").append("</div>");
-    $(".content-online").append("</div>");
+    var html = "<a target = '_blank' href ="+data.stream.channel.url+"><div class = 'row style style-online'><div class = 'col-md-2'><img src = "+data.stream.channel.logo+"></div><div class ='col-md-10'><p>"+data.stream.channel.display_name +"<br> "+data.stream.channel.status +"</p></div></div></a>";
+    $(".content-online").append(html);
 }
