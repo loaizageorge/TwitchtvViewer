@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    window.test = function (e) {
+    window.displayStreams = function (e) {
         if (e.value == "all") {
             $(".content-online").show();
             $(".content-offline").show();
@@ -15,9 +15,8 @@ $(document).ready(function () {
         }
     }
     var streamers = ["GalacticElliot", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
-    //var streamers = ["freecodecamp","storbeck", "habathcx"]; 
     streamers.forEach(function (streamer) {
-        $.getJSON("https://api.twitch.tv/kraken/streams/" + streamer + "?callback=?", function (streamInfo) {
+        $.getJSON("https://wind-bow.hyperdev.space/twitch-api/streams/" + streamer + "?callback=?", function (streamInfo) {
             if (streamInfo.stream == null) {
                 offlineStream(streamer);
                 console.log(streamer + "offline");
@@ -27,15 +26,11 @@ $(document).ready(function () {
                 console.log(streamer + "online");
             }
         });
-        //console.log(data.stream);
-        //var spaghetti = JSON.stringify(data);
-        //$("#streamer").html(data.stream.channel.display_name);
-        //$("#description").html(data.stream.channel.status);
     });
 });
 
 function offlineStream(streamer) {
-    $.getJSON("https://api.twitch.tv/kraken/channels/" + streamer + "?callback=?", function (channelInfo) {
+    $.getJSON("https://wind-bow.hyperdev.space/twitch-api/channels/" + streamer + "?callback=?", function (channelInfo) {
         var html = "<a target = '_blank' href = " + channelInfo.url + "><div class = 'row style style-offline'><div class = 'col-md-2'><img src = " + channelInfo.logo + "></div><div class = 'col-md-10'><p>"+streamer+"<br>Offline</p></div></div></a>";
         $(".content-offline").append(html);
     });
